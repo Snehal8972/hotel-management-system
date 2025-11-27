@@ -1,0 +1,53 @@
+.center-form {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 15px;
+
+  .page-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    color: #1890ff; // Ant Design primary color
+    margin-bottom: 20px;
+  }
+
+  nz-table {
+    margin-bottom: 20px;
+
+    th {
+      text-align: center;
+      background-color: #fafafa;
+      font-weight: 500;
+    }
+
+    td {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    button {
+      margin: 2px 0;
+    }
+  }
+
+  nz-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    nz-table {
+      font-size: 12px;
+
+      th, td {
+        padding: 8px;
+      }
+    }
+
+    .page-title {
+      font-size: 22px;
+    }
+  }
+}

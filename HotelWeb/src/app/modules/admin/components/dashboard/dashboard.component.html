@@ -1,0 +1,72 @@
+<div class="top-bar">
+  <button nz-button nzType="primary" class="post-room-btn" routerLink="/admin/room">
+     Post Room
+  </button>
+</div>
+
+<div class="room-container">
+
+  <div class="room-row" *ngFor="let room of rooms">
+
+    <nz-card class="room-card" [nzActions]="[editTpl, deleteTpl]">
+
+      <nz-skeleton [nzActive]="true" [nzLoading]="loading">
+
+        <!-- Room Header -->
+        <nz-card-meta
+          [nzAvatar]="avatarTemplate"
+          [nzTitle]="room.name"
+          nzDescription=""
+        ></nz-card-meta>
+
+        <!-- Room Type -->
+        <div class="type-text">
+          Type: {{ room.type }}
+        </div>
+
+        <!-- Room Price -->
+        <div class="price-text">
+          Price: ₹{{ room.price }}
+        </div>
+
+      </nz-skeleton>
+
+      <!-- Avatar template -->
+      <ng-template #avatarTemplate>
+        <nz-avatar
+          nzShape="square"
+          nzSize="large"
+          nzSrc="https://assets.simplotel.com/simplotel/image/upload/x_0,y_294,w_3200,h_1799,r_0,c_crop,q_80,fl_progressive/w_900,f_auto,c_fit/pride-plaza-hotel-ahmedabad/Deluxe_Room_with_king-size_bed,_seating_area,_and_stylish_lighting_for_ultimate_comfort">
+        </nz-avatar>
+      </ng-template>
+
+      <!-- EDIT -->
+      <ng-template #editTpl>
+        <button nz-button nzType="default" class="edit-btn"
+          [routerLink]="['/admin/room', room.id, 'edit']">
+          <span nz-icon nzType="edit"></span>
+        </button>
+      </ng-template>
+
+      <!-- DELETE -->
+      <ng-template #deleteTpl>
+        <button nz-button nzDanger class="delete-btn"
+          (click)="showConfirm(room.id)">
+          <span nz-icon nzType="delete"></span>
+        </button>
+      </ng-template>
+
+    </nz-card>
+
+  </div>
+
+  <div class="pagination">
+    <nz-pagination
+      [nzPageIndex]="currentPage"
+      [nzTotal]="total"
+      [nzPageSize]="1"
+      (nzPageIndexChange)="pageIndexChange($event)">
+    </nz-pagination>
+  </div>
+
+</div>

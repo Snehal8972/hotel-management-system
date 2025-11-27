@@ -1,0 +1,51 @@
+
+
+
+ <div class="center-form">
+  <h1 class="page-title">Reservations</h1>
+
+  <nz-table [nzData]="reservations" [nzBordered]="true" [nzShowPagination]="false">
+    <thead>
+      <tr>
+        <th>Room Name</th>
+        <th>Type</th>
+        <th>Check In</th>
+        <th>Check Out</th>
+        <th>Price</th>
+        <th>Username</th>
+        <th>Status</th>
+        <th>Payment</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let r of reservations">
+        <td>{{r.roomName}}</td>
+        <td>{{r.roomType}}</td>
+        <td>{{r.checkInDate | date:'yyyy-MM-dd'}}</td>
+        <td>{{r.checkOutDate | date:'yyyy-MM-dd'}}</td>
+        <td>{{r.price}}</td>
+        <td>{{r.username}}</td>
+        <td>
+          <nz-tag *ngIf="r.reservationStatus==='PENDING'" nzColor="orange">Pending</nz-tag>
+          <nz-tag *ngIf="r.reservationStatus==='APPROVED'" nzColor="green">Approved</nz-tag>
+          <nz-tag *ngIf="r.reservationStatus==='REJECTED'" nzColor="red">Rejected</nz-tag>
+        </td>
+        <td>
+          <nz-tag *ngIf="r.paymentStatus==='WAIT'" nzColor="orange">WAIT</nz-tag>
+          <nz-tag *ngIf="r.paymentStatus==='PAID'" nzColor="green">PAID</nz-tag>
+          <nz-tag *ngIf="r.paymentStatus==='NOT_AVAILABLE'" nzColor="red">NOT AVAILABLE</nz-tag>
+        </td>
+        <td>
+          <ng-container *ngIf="r.reservationStatus==='PENDING'">
+            <button nz-button nzType="primary" (click)="changeReservationStatus(r.id,'APPROVED')">Approve</button>
+            <button nz-button nzType="default" (click)="changeReservationStatus(r.id,'REJECTED')">Reject</button>
+          </ng-container>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+  <nz-pagination [nzPageIndex]="currentPage" [nzTotal]="total" [nzPageSize]="pageSize" (nzPageIndexChange)="pageIndexChange($event)">
+  </nz-pagination>
+</div>

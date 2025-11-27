@@ -1,0 +1,43 @@
+.bookings-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 15px;
+
+  .page-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    color: #1890ff; // Ant Design primary color
+    margin-bottom: 20px;
+  }
+
+  nz-table {
+    margin-bottom: 20px;
+
+    th {
+      text-align: center;
+    }
+
+    td {
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+
+  .pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .back-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+    button {
+      width: 200px;
+      font-weight: 500;
+    }
+  }
+}

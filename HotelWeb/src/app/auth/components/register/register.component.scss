@@ -1,0 +1,152 @@
+// .center-form {
+//   width: 380px;
+//   margin: 60px auto;
+//   padding: 30px;
+//   background: #ffffff;
+//   border-radius: 14px;
+//   box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
+//   text-align: center;
+
+//   img {
+//     width: 80px;
+//     height: 80px;
+//     margin-bottom: 15px;
+//     object-fit: contain;
+//     display: block;
+//     margin-left: auto;
+//     margin-right: auto;
+//   }
+
+//   h2 {
+//     font-size: 22px;
+//     font-weight: 600;
+//     margin-bottom: 25px;
+//     color: #1a1a1a;
+//   }
+
+//   .custom-form {
+//     nz-form-item {
+//       margin-bottom: 18px;
+//     }
+
+//     input[nz-input] {
+//       height: 40px;
+//       border-radius: 6px;
+//       border: 1px solid #d9d9d9;
+//       transition: all 0.3s ease;
+//       font-size: 14px;
+
+//       &:focus {
+//         border-color: #2c3e50;
+//         box-shadow: 0 0 0 2px rgba(47, 85, 151, 0.2);
+//       }
+//     }
+
+//     button[nz-button] {
+//       margin-top: 10px;
+//       background-color: #0d1b2a;
+//       height: 40px;
+//       border-radius: 6px;
+//       font-size: 16px;
+//       font-weight: 500;
+
+//       &:hover {
+//         background-color: #1b263b;
+//       }
+
+//       &[disabled] {
+//         background-color: #b5b5b5;
+//         cursor: not-allowed;
+//       }
+//     }
+//   }
+// }
+body, html {
+  height: 70%;
+  margin: 0;
+}
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  background: url('/assets/bg1.jpg') no-repeat center center fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+/* 🧊 Login Card (Glassmorphism Effect) */
+.center-form {
+  width: 380px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.85); /* Soft transparent white */
+  border-radius: 14px;
+  box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  backdrop-filter: blur(6px); /* Glass effect */
+}
+
+.center-form img {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 15px;
+  object-fit: contain;
+}
+
+.center-form h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #1a1a1a;
+}
+
+/* 🔹 Form Fields */
+input[nz-input] {
+  height: 40px;
+  border-radius: 6px;
+  border: 1px solid #d9d9d9;
+  transition: all 0.3s ease;
+  font-size: 14px;
+
+  &:focus {
+    border-color: #2c3e50;
+    box-shadow: 0 0 0 2px rgba(47, 85, 151, 0.2);
+  }
+}
+
+/* 🔵 Button Styling */
+button[nz-button] {
+  margin-top: 10px;
+  background-color: #0d1b2a;
+  height: 40px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+
+  &:hover {
+    background-color: #1b263b;
+  }
+
+  &[disabled] {
+    background-color: #b5b5b5;
+    cursor: not-allowed;
+  }
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 450px) {
+  .center-form {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .center-form h2 {
+    font-size: 18px;
+  }
+
+  button[nz-button] {
+    font-size: 14px;
+  }
+}

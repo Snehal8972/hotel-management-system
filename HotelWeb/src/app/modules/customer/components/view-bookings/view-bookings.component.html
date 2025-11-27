@@ -1,0 +1,104 @@
+<!-- 
+
+
+
+
+<nz-table [nzData]="bookings" [nzBordered]="true" [nzShowPagination]="false">
+  <thead>
+    <tr>
+      <th>Room Name</th><th>Type</th><th>Check In</th><th>Check Out</th>
+      <th>Price</th><th>ReservationStatus</th><th>PaymentStaus</th><th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let b of bookings">
+      <td>{{b.roomName}}</td>
+      <td>{{b.roomType}}</td>
+      <td>{{b.checkInDate | date:'yyyy-MM-dd'}}</td>
+      <td>{{b.checkOutDate | date:'yyyy-MM-dd'}}</td>
+      <td>{{b.price}}</td>
+      <td>
+        <nz-tag *ngIf="b.reservationStatus==='PENDING'" nzColor="orange">Pending</nz-tag>
+        <nz-tag *ngIf="b.reservationStatus==='APPROVED'" nzColor="green">Approved</nz-tag>
+        <nz-tag *ngIf="b.reservationStatus==='REJECTED'" nzColor="red">Rejected</nz-tag>
+      </td>
+      <td>
+        <nz-tag *ngIf="b.paymentStatus==='WAIT'" nzColor="orange">WAIT</nz-tag>
+        <nz-tag *ngIf="b.paymentStatus==='PAID'" nzColor="green">PAID</nz-tag>
+        <nz-tag *ngIf="b.paymentStatus==='NOT_AVAILABLE'" nzColor="red">NOT AVAILABLE</nz-tag>
+      </td>
+      <td>
+        <button nz-button nzType="primary" *ngIf="b.reservationStatus==='APPROVED' && b.paymentStatus==='WAIT'" (click)="pay(b.id)">Pay</button>
+        <button nz-button nzType="default" *ngIf="b.paymentStatus==='PAID'" (click)="downloadReceipt(b)">Download Receipt</button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<nz-pagination [nzPageIndex]="currentPage" [nzTotal]="total" [nzPageSize]="pageSize" (nzPageIndexChange)="pageIndexChange($event)"></nz-pagination>
+ <button nz-button nzType="primary" class="post-room-btn" routerLink="/customer/rooms">
+    Back To Rooms
+  </button> -->
+
+
+
+
+  <div class="bookings-container">
+  <h1 class="page-title">My Bookings</h1>
+
+  <nz-table [nzData]="bookings" [nzBordered]="true" [nzShowPagination]="false">
+    <thead>
+      <tr>
+        <th>Room Name</th>
+        <th>Type</th>
+        <th>Check In</th>
+        <th>Check Out</th>
+        <th>Price</th>
+        <th>Reservation Status</th>
+        <th>Payment Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let b of bookings">
+        <td>{{b.roomName}}</td>
+        <td>{{b.roomType}}</td>
+        <td>{{b.checkInDate | date:'yyyy-MM-dd'}}</td>
+        <td>{{b.checkOutDate | date:'yyyy-MM-dd'}}</td>
+        <td>{{b.price}}</td>
+        <td>
+          <nz-tag *ngIf="b.reservationStatus==='PENDING'" nzColor="orange">Pending</nz-tag>
+          <nz-tag *ngIf="b.reservationStatus==='APPROVED'" nzColor="green">Approved</nz-tag>
+          <nz-tag *ngIf="b.reservationStatus==='REJECTED'" nzColor="red">Rejected</nz-tag>
+        </td>
+        <td>
+          <nz-tag *ngIf="b.paymentStatus==='WAIT'" nzColor="orange">WAIT</nz-tag>
+          <nz-tag *ngIf="b.paymentStatus==='PAID'" nzColor="green">PAID</nz-tag>
+          <nz-tag *ngIf="b.paymentStatus==='NOT_AVAILABLE'" nzColor="red">NOT AVAILABLE</nz-tag>
+        </td>
+        <td>
+          <button nz-button nzType="primary" *ngIf="b.reservationStatus==='APPROVED' && b.paymentStatus==='WAIT'" (click)="pay(b.id)">
+            Pay
+          </button>
+          <button nz-button nzType="default" *ngIf="b.paymentStatus==='PAID'" (click)="downloadReceipt(b)">
+            Download Receipt
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+  <div class="pagination-container">
+    <nz-pagination 
+      [nzPageIndex]="currentPage" 
+      [nzTotal]="total" 
+      [nzPageSize]="pageSize" 
+      (nzPageIndexChange)="pageIndexChange($event)">
+    </nz-pagination>
+  </div>
+
+  <div class="back-button">
+    <button nz-button nzType="primary" routerLink="/customer/rooms">
+      Back To Rooms
+    </button>
+  </div>
+</div>

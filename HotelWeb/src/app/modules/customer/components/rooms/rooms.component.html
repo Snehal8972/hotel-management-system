@@ -1,0 +1,68 @@
+<div class="room-container">
+
+  <div class="room-row" *ngFor="let room of rooms">
+    <nz-card class="room-card">
+      <nz-skeleton [nzActive]="true" [nzLoading]="loading">
+    
+        <nz-card-meta
+          [nzAvatar]="avatarTemplate"
+          [nzTitle]="room.name">
+        </nz-card-meta>
+
+     
+        <div class="type-text">
+          Type: {{ room.type }}
+        </div>
+
+    
+        <div class="price-text">
+          Price: ₹{{ room.price }}
+        </div>
+      </nz-skeleton>
+
+   
+      <ng-template #avatarTemplate>
+        <nz-avatar
+          nzShape="square"
+          nzSize="large"
+          nzSrc="https://assets.simplotel.com/simplotel/image/upload/x_0,y_294,w_3200,h_1799,r_0,c_crop,q_80,fl_progressive/w_900,f_auto/c_fit/pride-plaza-hotel-ahmedabad/Deluxe_Room_with_king-size_bed,_seating_area,_and_stylish_lighting_for_ultimate_comfort">
+        </nz-avatar>
+      </ng-template>
+
+   
+   <div class="checkout-box">
+        <span nz-icon nzType="check-square" nzTheme="outline" class="checkout-icon"
+          (click)="showModalMiddle(room.id)">
+        </span>
+      </div>
+    </nz-card>
+  </div>
+  <div class="pagination">
+    <nz-pagination
+      [nzPageIndex]="currentPage"
+      [nzTotal]="total"
+      [nzPageSize]="1"
+      (nzPageIndexChange)="pageIndexChange($event)">
+    </nz-pagination>
+  </div>
+</div>
+
+
+<nz-modal
+  nzTitle="Book Room"
+  nzCentered
+  [(nzVisible)]="isVisibleMiddle"
+  (nzOnCancel)="handleCancleMiddle()"
+  (nzOnOk)="handleOkMiddle()"
+>
+  <div *nzModalContent>
+    <nz-range-picker
+      style="width: 100%;"
+      [(ngModel)]="date"
+      (ngModelChange)="onChange($event)">
+    </nz-range-picker>
+  </div>
+</nz-modal>
+ 
+
+ 
